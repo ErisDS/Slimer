@@ -1,4 +1,5 @@
 const newProject = require('../lib/new-project');
+const Switch = require('@tryghost/pretty-cli/types/switch');
 
 // Internal ID in case we need one.
 exports.id = 'new';
@@ -20,6 +21,11 @@ exports.setup = (sywac) => {
         desc: 'The type of project to create',
         choices: ['module', 'app', 'pkg', 'mono']
     });
+
+    sywac.custom(new Switch({
+        flags: '--public',
+        desc: 'Is the project public?'
+    }));
 };
 
 // What to do when this command is executed
